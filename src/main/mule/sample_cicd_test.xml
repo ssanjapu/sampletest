@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="10c93f60-142d-443e-ae4b-01b744e3a10b" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="sample_cicd_testFlow" doc:id="d97a0bfd-3f1c-4739-b454-e13b08aea9f3" >
+		<http:listener doc:name="Listener" doc:id="8637bb84-1b45-4758-b688-a5eabaf6d2ca" config-ref="HTTP_Listener_config" path="/test"/>
+		<logger level="INFO" doc:name="Logger" doc:id="100782b1-0eb9-4454-be65-6b4660038dad" message="sample test"/>
+		<set-payload value="Hello Jenkins World" doc:name="Set Payload" doc:id="c5b68ab2-c659-4d9f-be68-cdb0d98ef50c" />
+	</flow>
+</mule>
